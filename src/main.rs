@@ -1,3 +1,4 @@
+use crate::dither::dither_bayer;
 use crate::dither::dither_threshold;
 
 mod dither;
@@ -23,6 +24,16 @@ fn main() {
     dither_threshold(&mut buffer, height, width, 128);
 
     println!("Dithered Buffer:");
+    for y in 0..height {
+        for x in 0..width {
+            let i = y * width + x;
+            print!("{:>4}", buffer[i])
+        }
+        println!();
+    }
+
+    dither_bayer(&mut buffer, height, width);
+    println!("Bayer Dithering:");
     for y in 0..height {
         for x in 0..width {
             let i = y * width + x;
