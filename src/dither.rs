@@ -14,7 +14,9 @@ pub fn dither_threshold(buffer: &mut [u8], height: usize, width: usize, threshol
     }
 }
 
+// bayer matrix dithering implementation
 pub fn dither_bayer(buffer: &mut [u8], height: usize, width: usize) {
+    // larger matrices provide finer dithering patterns and better smoothing
     let raw_matrix = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]];
 
     // for loops used to iterate over all positions of the buffer
@@ -42,10 +44,6 @@ pub fn dither_bayer(buffer: &mut [u8], height: usize, width: usize) {
     }
 }
 
-// goal here is to add other forms of dithering and allow user to select algos, but this works for now
-// pub fn ordered_dither(buffer: &mut [u8], height: usize, width:usize)
-
-// unit tests, dood. very basic for now. testing thresholding
 #[cfg(test)]
 mod tests {
     use super::*;
