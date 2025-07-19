@@ -8,7 +8,10 @@ fn main() {
     let width = 4;
     let height = 4;
     let mut buffer = vec![
-        0, 64, 128, 192, 64, 128, 192, 255, 128, 192, 255, 128, 192, 255, 128, 64,
+        0, 64, 128, 192,
+        64, 128, 192, 255,
+        128, 192, 255, 128,
+        192, 255, 128, 64,
     ];
 
     println!("Original Buffer:");
@@ -32,13 +35,13 @@ fn main() {
         println!();
     }
 
-    dither_bayer(&mut buffer, height, width);
-    println!("Bayer Dithering:");
-    for y in 0..height {
-        for x in 0..width {
-            let i = y * width + x;
-            print!("{:>4}", buffer[i])
-        }
-        println!();
-    }
+    // dither_bayer(&mut buffer, height, width, 2);
+    // println!("Bayer Dithering:");
+    // for y in 0..height {
+    //     for x in 0..width {
+    //         let i = y * width + x;
+    //         print!("{:>4}", buffer[i])
+    //     }
+    //     println!();
+    // }
 }
